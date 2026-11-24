@@ -1,0 +1,73 @@
+<!doctype html>
+<html lang="ko">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="theme-color" content="#14121b">
+<meta name="description" content="던전앤파이터 모바일 루크 레이드 역기획: PC 원작의 모바일 재해석, 3페이즈 구조, 싱글·파티 보상과 모놀리움 성장 시스템 분석.">
+<title>루크 레이드의 모바일 재해석 | DNF Mobile 역기획서</title>
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+<a class="skip-link" href="#overview">본문으로 이동</a>
+<div class="site-shell">
+<aside class="sidebar" id="sidebar" aria-label="문서 목차">
+ <div class="brand"><span class="brand-symbol">L<span>·</span>R</span><div><strong>LUKE RAID</strong><small>REVERSE DESIGN STUDY</small></div></div>
+ <div class="side-rule"></div>
+ <span class="sidebar-overline">CONTENTS / 2026.11.24</span>
+ <nav id="toc"><a href="#cover" class="active"><span>00</span>Overview</a><a href="#overview"><span>01</span>분석 목표</a><a href="#spec"><span>02</span>콘텐츠 명세</a><a href="#structure"><span>03</span>진행 구조</a><a href="#comparison"><span>04</span>PC·모바일 비교</a><a href="#combat"><span>05</span>전투 설계</a><a href="#reward"><span>06</span>보상 설계</a><a href="#growth"><span>07</span>성장 시스템</a><a href="#ecosystem"><span>08</span>성장 연계</a><a href="#conclusion"><span>09</span>종합 결론</a></nav>
+ <div class="sidebar-bottom"><a class="download-side" href="Luke_Raid_Reverse_Design.pdf" download>PDF 역기획서 <span aria-hidden="true">↗</span></a><small>본 문서는 게임 콘텐츠의 구조를 연구하기 위한 비공식 역기획서입니다.</small></div>
+</aside>
+<div class="main-shell">
+<header class="mobile-header"><a href="#cover" class="mobile-brand">LUKE RAID <span>·</span> DESIGN</a><button id="menuToggle" type="button" aria-expanded="false" aria-controls="sidebar">목차 보기 <span>☰</span></button></header>
+<main>
+<section class="hero" id="cover" aria-labelledby="hero-title">
+  <div class="hero-glow glow-gold"></div><div class="hero-glow glow-violet"></div>
+  <div class="hero-content"><div class="kicker"><span class="gold-dot"></span> DNF MOBILE · CONTENT REVERSE DESIGN</div><div class="hero-line"></div>
+    <p class="hero-index">01 / CONTENT STUDY</p><h1 id="hero-title">루크 레이드의<br><em>모바일 재해석</em></h1><p class="hero-subtitle">PC 원작의 대규모 레이드는<br>모바일에서 어떻게 재설계되었는가?</p>
+    <div class="hero-footer"><span>콘텐츠 역기획 / 2026.11.24 기준</span><a href="#overview">분석 시작 <span aria-hidden="true">↘</span></a></div>
+  </div>
+  <div class="hero-visual"><div class="hero-visual-frame"><img src="assets/luke-main.png" alt="빛과 어둠의 루크 레이드 공식 메인 이미지" fetchpriority="high"></div><span class="visual-caption">LIGHT <span>·</span> DARK</span></div>
+</section>
+<div class="page-body">
+<section class="content-section" id="overview" aria-labelledby="s-overview"><div class="section-number">01 / RESEARCH QUESTION</div><div class="section-heading"><h2 id="s-overview">무엇을, 왜 분석하는가?</h2><p>전투 공략법이 아니라 콘텐츠의 설계 선택과 그 효과를 분석한다.</p></div>
+ <div class="thesis"><span class="thesis-label">KEY QUESTION</span><p>원작의 레이드 정체성을 유지하면서도, 모바일 환경에 맞는 <strong>가벼운 진행·직접적인 전투·선택 가능한 성장</strong>을 어떻게 구현했는가?</p></div>
+ <div class="three-grid"><article class="feature"><span class="feature-num">01</span><h3>원작의 정체성</h3><p>루크의 세계관과 상징적인 보스, 기믹을 계승한다.</p></article><article class="feature"><span class="feature-num">02</span><h3>접근성 재설계</h3><p>대규모 공격대 운영을 간결한 소규모 진행으로 압축한다.</p></article><article class="feature"><span class="feature-num">03</span><h3>성장과 선택권</h3><p>핵심 성장 보상은 공유하고, 협동에는 추가적 보상 가치를 제공한다.</p></article></div>
+ <p class="source-note">분석 원칙 · 공식 발표에 근거한 사실, 사용자 제공 인게임 정보, 역기획적 추론을 분리해 표기한다.</p></section>
+<section class="content-section" id="spec" aria-labelledby="s-spec"><div class="section-number">02 / CONTENT SPECIFICATION</div><div class="section-heading"><h2 id="s-spec">콘텐츠 기본 명세</h2><p>적은 인원으로 참여할 수 있지만 레이드의 핵심 구조는 유지한다.</p></div>
+ <div class="spec-layout"><div class="stat-grid"><div class="stat"><span>싱글 입장 항마력</span><strong>265,000</strong><small>1인</small></div><div class="stat"><span>파티 입장 항마력</span><strong>280,000</strong><small>2~3인</small></div><div class="stat"><span>관문 구성</span><strong>3 <i>PHASE</i></strong><small>총 6개 던전</small></div><div class="stat"><span>기본 참여</span><strong>주 1회</strong><small>캐릭터 단위</small></div></div><figure class="entry-figure"><img src="assets/entry-screen.png" alt="루크 레이드 입장 화면" loading="lazy"><figcaption>사용자 제공 · 루크 레이드 입장 화면 (원본 해상도 제한)</figcaption></figure></div>
+ <div class="fact-strip"><span>싱글·파티</span><p>주요 공략 패턴은 공통이며, 인원과 난이도에 따라 전투 수치가 달라지는 구조.</p></div><p class="source-note">출처 · <a href="https://dnfm.nexon.com/News/Devnote/View/3541318" target="_blank" rel="noopener noreferrer">2026.09.10 공식 개발자 노트</a>, 사용자 제공 플레이 정보.</p></section>
+<section class="content-section" id="structure" aria-labelledby="s-structure"><div class="section-number">03 / LEVEL PROGRESSION</div><div class="section-heading"><h2 id="s-structure">3페이즈, 6개 던전</h2><p>하나의 공격대가 선행 던전을 클리어하면 다음 던전이 해금된다.</p></div>
+ <div class="phase-list"><article class="phase-card"><div class="phase-meta"><span>PHASE <b>01</b></span><h3>감독관의 방 <span>→</span><br>탄생의 성소</h3><p>첫 번째 던전 클리어 후 두 번째 던전 활성화</p></div><img src="assets/phase-1.png" alt="1페이즈 감독관의 방 클리어 후 탄생의 성소 활성화 구조" loading="lazy"></article><article class="phase-card"><div class="phase-meta"><span>PHASE <b>02</b></span><h3>옛 왕의 영광 <span>→</span><br>끝나지 않는 악몽</h3><p>두 번째 페이즈에서도 순차 해금 규칙 유지</p></div><img src="assets/phase-2.png" alt="2페이즈 옛 왕의 영광 클리어 후 끝나지 않는 악몽 활성화 구조" loading="lazy"></article><article class="phase-card"><div class="phase-meta"><span>PHASE <b>03</b></span><h3>최후의 문지기 <span>→</span><br>눈 먼 왕의 통곡</h3><p>최종 보스 전투로 이어지는 마지막 관문</p></div><img src="assets/phase-3.png" alt="3페이즈 최후의 문지기 클리어 후 눈 먼 왕의 통곡 활성화 구조" loading="lazy"></article></div>
+ <div class="insight"><span>DESIGN INTERPRETATION</span><p>복수 파티의 병렬 진행이 아닌 <strong>단일 경로의 순차 해금</strong>으로, 다음 목표를 명확하게 파악할 수 있도록 구성했다.</p></div><p class="source-note">이미지 · 사용자 제공 페이즈 진행 자료. 해석은 역기획 가설.</p></section>
+<section class="content-section" id="comparison" aria-labelledby="s-comparison"><div class="section-number">04 / ORIGINAL vs MOBILE</div><div class="section-heading"><h2 id="s-comparison">원작의 구조를 어떻게 바꿨는가?</h2><p>원작을 단순 축소한 것이 아니라 중심이 되는 플레이 경험을 재배치했다.</p></div>
+ <div class="compare-grid"><article class="compare-card pc"><div class="compare-top"><span>PC / INITIAL LUKE RAID</span><span class="compare-icon">08</span></div><h3>공격대 운영의 전략성</h3><ul><li>초기 8인 공격대와 복수 파티</li><li>파티별 경로와 역할 분담</li><li>다른 파티 진행과 연동되는 공략</li></ul><small>※ PC는 출시 이후 여러 차례 개편되었으며, 초기형 기준 비교</small></article><div class="compare-arrow" aria-hidden="true">→</div><article class="compare-card mobile"><div class="compare-top"><span>DNF MOBILE / 2026</span><span class="compare-icon">03</span></div><h3>소규모 직접 전투</h3><ul><li>싱글 1인 / 파티 2~3인</li><li>하나의 공격대가 순차적으로 공략</li><li>보스 기믹과 전장 상호작용에 집중</li></ul><small>단계적 관문 진행 및 동등한 핵심 성장 경로 제공</small></article></div>
+ <div class="insight"><span>DESIGN INTERPRETATION</span><p><strong>공격대 운영 부담은 줄이고 보스 전투에 대한 집중도를 높이는 방향</strong>으로 구조를 재구성했다.</p></div></section>
+<section class="content-section" id="combat" aria-labelledby="s-combat"><div class="section-number">05 / COMBAT EXPERIENCE</div><div class="section-heading"><h2 id="s-combat">전투는 공략집이 아닌 ‘경험’으로 분석</h2><p>대표 사례만 활용해 모바일 전투 설계의 방향성을 확인한다.</p></div>
+ <div class="combat-steps"><div><span>01</span><strong>단서 제시</strong><small>표식·동작·상황</small></div><span class="step-arrow">→</span><div><span>02</span><strong>판단</strong><small>타깃·위치 선택</small></div><span class="step-arrow">→</span><div><span>03</span><strong>행동</strong><small>이동·공격·유도</small></div><span class="step-arrow">→</span><div><span>04</span><strong>피드백</strong><small>그로기·파훼</small></div></div>
+ <div class="two-grid"><article class="mini-case"><span>CASE 01</span><h3>레드 크라운</h3><p>PC 원작의 분신 제어 중심 대응에서 모바일의 <strong>관찰·선택형 기믹</strong>으로 재해석한 사례.</p></article><article class="mini-case"><span>CASE 02</span><h3>골고타 · 칼바리</h3><p>두 보스의 연계 공격을 <strong>서로에게 유도</strong>해 상황을 유리하게 바꾸는 전투 경험.</p></article></div>
+ <p class="source-note">보스별 패턴의 상세 수치·프레임·연출은 별도 검증 범위. 위 설명은 대표 메커니즘에 한정한다.</p></section>
+<section class="content-section" id="reward" aria-labelledby="s-reward"><div class="section-number">06 / REWARD DESIGN</div><div class="section-heading"><h2 id="s-reward">핵심 성장은 동일하게, 부가 보상은 다르게</h2><p>싱글과 파티 선택에서 가장 중요한 것은 기본 성장 기회의 차별을 줄인 점이다.</p></div>
+ <div class="reward-grid"><article><span class="mode-label">SINGLE / 1 PLAYER</span><strong class="reward-amount">18~20 <small>개</small></strong><p>주간 모놀리움 기본 보상</p><div class="reward-divider"></div><strong>경매 주화 조각 4개</strong><small>조각 10개 → 경매 주화 1개</small></article><article><span class="mode-label">PARTY / 2–3 PLAYERS</span><strong class="reward-amount">18~20 <small>개</small></strong><p>주간 모놀리움 기본 보상</p><div class="reward-divider"></div><strong>경매 주화 1개</strong><small>부가 보상 효율 차별화</small></article></div>
+ <div class="reward-summary"><div><strong>동일한 핵심 성장</strong><p>싱글·파티 모두 동일한 모놀리움 기본 획득량</p></div><div><strong>다른 부가 보상</strong><p>파티 경매 주화 우위, 카드·거래 가능 보상 기대</p></div><div><strong>시간 선택권</strong><p>레이드 클리어와 경매 참여 시점 분리</p></div></div>
+ <p class="source-note">모놀리움·주화의 정확한 수량은 사용자 제공 인게임 관찰. 공식 방향: <a href="https://dnfm.nexon.com/News/Devnote/View/3541318" target="_blank" rel="noopener noreferrer">2026.09.10 개발자 노트</a>.</p></section>
+<section class="content-section" id="growth" aria-labelledby="s-growth"><div class="section-number">07 / GROWTH ECONOMY</div><div class="section-heading"><h2 id="s-growth">명확한 60개 단위 성장 목표</h2><p>이전 장비의 가치를 계승하면서 단계별 업그레이드 목표를 제시한다.</p></div>
+ <div class="growth-top"><div><span>TOTAL MATERIAL</span><strong>240<small> 모놀리움</small></strong></div><div><span>TOTAL GOLD</span><strong>5,000<small> 만 골드</small></strong></div><div><span>RAID ONLY</span><strong>12–14<small> 회</small></strong></div></div>
+ <div class="growth-content"><div class="growth-items"><div><span>무기 1차 업그레이드</span><strong>60개 · 1,000만</strong></div><div><span>무기 2차 업그레이드</span><strong>60개 · 2,000만</strong></div><div><span>목걸이 업그레이드</span><strong>60개 · 1,000만</strong></div><div><span>반지 업그레이드</span><strong>60개 · 1,000만</strong></div><div class="total-row"><span>전체 제작 비용</span><strong>240개 · 5,000만 골드</strong></div></div><div class="growth-viz"><span class="viz-label">재료 누적 / 레이드 기본 보상만</span><div class="bar-key"><span class="key-min"></span>매회 18개 <span class="key-max"></span>매회 20개</div><div class="bars"><div><small>4회</small><span class="bar-track"><i style="width:25.7%"></i><b style="width:28.6%"></b></span><small>72–80</small></div><div><small>8회</small><span class="bar-track"><i style="width:51.4%"></i><b style="width:57.1%"></b></span><small>144–160</small></div><div><small>12회</small><span class="bar-track"><i style="width:77.1%"></i><b style="width:85.7%"></b></span><small>216–240</small></div><div><small>14회</small><span class="bar-track"><i style="width:90%"></i><b style="width:100%"></b></span><small>252–280</small></div></div><p>※ 전체 240개 확보에 필요한 횟수는 매회 20개라면 12회, 매회 18개라도 14회. 추가 드랍·경매·이벤트·골드 확보 시간은 제외.</p></div></div>
+ <div class="insight"><span>DESIGN INTERPRETATION</span><p><strong>확정 성장 재료를 누적하는 안정성</strong>에, 희귀 완성 무기 드랍 등 성장 가속의 기대감을 결합했다.</p></div></section>
+<section class="content-section" id="ecosystem" aria-labelledby="s-ecosystem"><div class="section-number">08 / SYSTEM ECOSYSTEM</div><div class="section-heading"><h2 id="s-ecosystem">레이드 밖에서도 이어지는 성장</h2><p>재료 수급은 주간 레이드뿐 아니라 일일 파밍, 경매, 운영 이벤트로 확장된다.</p></div>
+ <div class="ecosystem-grid"><article><span class="system-type">상시 · 파밍</span><h3>루크 관련 네임드 난입</h3><p>일반 파밍 던전에서 확률적으로 등장하여 에픽 장비 1개와 모놀리움 획득 기회를 제공.</p></article><article><span class="system-type">상시 · 희귀 드랍</span><h3>1차 업그레이드 무기</h3><p>레이드에서 완성 무기가 확률적으로 등장. 해체하면 모놀리움 30개 획득.</p></article><article><span class="system-type">상시 · 경매</span><h3>모험단 귀속 재료</h3><p>경매 물품에 모놀리움 1~3개 상자가 등장하며, 별도로 캐릭터 귀속 모놀리움 1개가 등장하는 경우도 있음.</p></article></div>
+ <div class="event-panel"><div><span class="event-mark">LIMITED EVENT</span><h3>넌 그냥 가만히 있어</h3><p>2026.10.22 – 11.26</p></div><div class="event-content"><p>‘레이드 깨줄게’ 캐릭터의 주간 클리어로 <strong>본 캐릭터에게 모험단 귀속 프리즘 40개</strong>, ‘가만히 있어’ 캐릭터에게 <strong>모놀리움 5개 + 프리즘 10개</strong> 상자를 제공.</p><p>성장 지원 대상 캐릭터의 파밍 던전 10회 클리어 누적 미션에는 <strong>모험단 귀속 모놀리움 20개(1회)</strong> 보상이 있다.</p></div></div>
+ <p class="source-note">상시 추가 보상 수량 및 이벤트 세부 규칙 · 사용자 제공 정보. 경매 출현 확률·가격은 확인되지 않았음. 기간 한정 보상은 기본 성장 기간 계산에 포함하지 않음.</p></section>
+<section class="content-section conclusion" id="conclusion" aria-labelledby="s-conclusion"><div class="section-number">09 / CONCLUSION & SOURCES</div><div class="section-heading"><h2 id="s-conclusion">원작의 정체성은 유지하고,<br><em>모바일에서의 경험은 다시 설계했다.</em></h2><p>루크 레이드의 설계 선택이 향하는 하나의 방향</p></div>
+ <div class="conclusion-quote">PC 루크 레이드에서 다중 파티 운영과 진행 연계가 차지하던 복잡성을 줄이고, 보스 공략 경험을 소규모 모바일 전투에 집중시켰다. 핵심 성장 재료의 접근성은 동일하게 유지하면서 파티 보상에 차등을 두고, 기존 장비의 가치와 유저의 선택권을 함께 보존했다.</div>
+ <div class="conclusion-points"><div><strong>01</strong><p>원작의 보스 정체성과 레이드 경험 계승</p></div><div><strong>02</strong><p>운영 부담을 줄인 소규모·순차 진행</p></div><div><strong>03</strong><p>성장 형평성과 추가 보상의 역할 분리</p></div></div>
+ <div class="refs"><h3>출처 및 자료 범위</h3><p><a href="https://dnfm.nexon.com/News/Devnote/View/3541318" target="_blank" rel="noopener noreferrer">2026.09.10 개발자 노트</a> · <a href="https://dnfm.nexon.com/News/Devnote/View/3578862" target="_blank" rel="noopener noreferrer">2026.11.11 개발자 노트</a> · <a href="https://dnfm.nexon.com/News/Devnote/View/3586265" target="_blank" rel="noopener noreferrer">2026.11.24 개발자 노트</a></p><p>사용자 제공 인게임 자료: 입장 및 페이즈 화면, 모놀리움 수급·제작 비용, 경매 및 이벤트 규칙. 본문의 ‘설계적 해석’은 제작진의 공식 의도를 단정하는 표현이 아님.</p><p>참고: <a href="https://df.nexon.com/pr/actupdate/MDAwOTM/?cat=4" target="_blank" rel="noopener noreferrer">PC 루크 레이드 공식 업데이트 자료</a>.</p></div>
+ <div class="bottom-cta"><span>DNF MOBILE / REVERSE DESIGN</span><a href="Luke_Raid_Reverse_Design.pdf" download>PDF 버전 다운로드 ↗</a></div></section>
+</div>
+</main>
+<footer class="site-footer"><span>LUKE RAID · REVERSE DESIGN</span><span>Based on materials available as of 2026.11.24</span></footer>
+</div></div>
+<script src="script.js" defer></script>
+</body>
+</html>
