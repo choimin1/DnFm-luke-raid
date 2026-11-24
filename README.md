@@ -8,16 +8,6 @@
 - 게임 이미지: `assets/`
 - 제출용 PDF: `Luke_Raid_Reverse_Design.pdf`
 
-## GitHub Pages 배포
-
-1. GitHub에서 새로운 **Public** 저장소를 만듭니다. 예: `dnfm-luke-raid`.
-2. 이 ZIP의 내용물(`index.html`, `style.css`, `script.js`, `assets/`, PDF 등)을 **저장소 최상위(root)** 에 업로드합니다. ZIP 파일 자체를 업로드하면 페이지가 표시되지 않습니다.
-3. 저장소의 **Settings → Pages**에서 **Build and deployment**를 `Deploy from a branch`로 설정합니다.
-4. **Branch**를 `main`, **Folder**를 `/(root)`로 선택하고 Save를 누릅니다.
-5. 배포되면 `https://<GitHub ID>.github.io/<repository-name>/` 주소에서 확인합니다.
-
-> GitHub Pages 활성화에 필요한 권한과 설정은 저장소 및 계정 상태에 따라 다를 수 있습니다.
-
 ## 자료 기준
 
 2026년 11월 24일까지 공개된 자료와 사용자 제공 인게임 수치/이미지를 기준으로 작성했습니다. 공식 개발진의 발표 내용과 역기획적 해석을 구분했습니다.
